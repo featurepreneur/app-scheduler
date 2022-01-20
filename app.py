@@ -9,10 +9,17 @@ PORT = 5000
 @app.route("/") 
 
 def scheduledTask():
+    
     print("Sample Scheduled task")
     
 
 if __name__ == "__main__":
+    
     scheduler.add_job(id = 'Scheduled task' , func = scheduledTask, trigger = 'interval', seconds = 5)
+    
+# @scheduler.task('cron', id='', week='*', day_of_week='fri')
+# def job():
+#     print('Job executed')
+
     scheduler.start()
     app.run(debug = True,host="0.0.0.0" , port = PORT)
